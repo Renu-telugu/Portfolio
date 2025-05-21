@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telugu Renuka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="public/images/github-min.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="min-h-screen">
+    <!-- Include header navigation -->
+    <div id="header-container"></div>
+    
+    <!-- Include hero section -->
+    <div id="hero-container"></div>
+    
+    <!-- Include about section -->
+    <div id="about-container"></div>
+    
+    <!-- Include other sections - these will be created later -->
+    <div id="skills-container"></div>
+    <div id="education-container"></div>
+    <div id="projects-container"></div>
+    <div id="certificates-container"></div>
+    <div id="contact-container"></div>
+    <div id="footer-container"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/grid-animation.js"></script>
+    <script>
+        // Function to load HTML sections
+        async function loadSection(containerId, sectionFile) {
+            try {
+                const response = await fetch(`sections/${sectionFile}`);
+                const html = await response.text();
+                document.getElementById(containerId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${sectionFile}:`, error);
+            }
+        }
+        
+        // Load all sections when the page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load all sections
+            await loadSection('header-container', 'header.html');
+            await loadSection('hero-container', 'hero.html');
+            await loadSection('about-container', 'about.html');
+            await loadSection('skills-container', 'skills.html');
+            await loadSection('education-container', 'education.html');
+            await loadSection('projects-container', 'projects.html');
+            await loadSection('certificates-container', 'certificates.html');
+            await loadSection('contact-container', 'contact.html');
+            await loadSection('footer-container', 'footer.html');
+            
+            // Setup contact form after all sections are loaded
+            setupContactForm();
+            
+            // Setup mobile menu toggle AFTER elements have been loaded
+            setupMobileMenu();
+        });
+        
+        // Contact form submission handler
+        function setupContactForm() {
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+        const formError = document.getElementById('form-error');
+        
+            if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+                    // Reset any visible notifications
+                    if (formSuccess) formSuccess.classList.remove('show');
+                    if (formError) formError.classList.remove('show');
+                    
+                    // Show success message almost immediately (0.1ms is too fast for setTimeout, using 1ms)
+                    setTimeout(() => {
+                        if (formSuccess) {
+                            formSuccess.classList.add('show');
+                            
+                            // Auto-hide the notification after 2 seconds
+                            setTimeout(() => {
+                                formSuccess.classList.remove('show');
+                    }, 1500);
+                }
+                        contactForm.reset();
+                    }, 1);  // Show almost immediately
+                });
+            }
+        }
+        
+        // Mobile menu functionality
+        function setupMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            console.log('Mobile Menu Button found:', !!mobileMenuButton);
+            console.log('Mobile Menu found:', !!mobileMenu);
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    console.log('Mobile menu button clicked');
+                    mobileMenu.classList.toggle('hidden');
+                    console.log('Mobile menu hidden class:', mobileMenu.classList.contains('hidden'));
+                });
+                
+                // Close mobile menu when clicking on a link
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            } else {
+                console.error('Mobile menu elements not found. Make sure you have elements with id="mobile-menu-button" and id="mobile-menu"');
+            }
+        }
+    </script>
+</body>
+</html>

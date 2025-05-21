@@ -1,0 +1,230 @@
+<!-- Hero Section -->
+<section id="home" class="reveal-hero min-h-screen flex items-center justify-center pt-16 px-2 sm:px-4 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8 items-center w-full">
+        <div class="text-center md:text-left w-full">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Telugu Renuka</span></h1>
+            <h2 class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6">Full Stack Developer <span class="seperator">|</span> Problem Solver</h2>
+            <p class="text-gray-400 mb-8 max-w-lg mx-auto md:mx-0 text-base sm:text-lg">I enjoy creating simple, clean, and user-friendly digital solutions.</p>
+            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-xs mx-auto md:mx-0 md:max-w-none md:w-auto justify-center md:justify-start">
+                <a href="https://github.com/Renu-telugu" target="_blank"
+                class="btn-primary text-white font-medium py-3 px-6 rounded-lg text-base sm:text-lg w-full sm:w-auto text-center">
+                    View My Work
+                </a>
+                <a href="https://www.linkedin.com/in/telugu-renuka-a26166264/" target="_blank"
+                class="border border-gray-600 text-gray-300 hover:bg-gray-800 font-medium py-3 px-6 rounded-lg transition duration-300 text-base sm:text-lg w-full sm:w-auto text-center">
+                    Let's Connect
+                </a>
+            </div>
+        </div>
+        <div class="w-full flex justify-center md:block mt-10 md:mt-0">
+            <!-- Professional Terminal -->
+            <div class="terminal-container w-full max-w-md sm:max-w-lg md:max-w-full">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="terminal-button red"></span>
+                            <span class="terminal-button yellow"></span>
+                            <span class="terminal-button green"></span>
+                        </div>
+                        <div class="terminal-title">developer@portfolio:~</div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="command-line"><span class="prompt">$</span> whoami</div>
+                        <div class="command-output">Telugu Renuka</div>
+
+                        <div class="command-line"><span class="prompt">$</span> echo "Aspiring Full Stack Developer 🚀"</div>
+                        <div class="command-output">Aspiring Full Stack Developer 🚀</div>
+
+                        <div class="command-line"><span class="prompt">$</span> tech stack --list</div>
+                        <pre class="command-output tech-stack">
+                    Frontend  : HTML, CSS, JavaScript, React, Bootstrap, Tailwind
+                    Backend   : Node.js, Express.js, Java, Python
+                    Database  : MongoDB, MySQL, SQL
+                    Tools     : Git, GitHub, VS Code, npm, REST APIs
+                        </pre>
+                        <div class="command-line"><span class="prompt">$</span> <span class="cursor"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.reveal-hero {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: heroReveal 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    animation-delay: 0.1s;
+}
+
+@keyframes heroReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.terminal-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+@media (max-width: 1023px) {
+    h1 {
+        margin-top: 2.5rem; /* Adjust as needed (e.g., 2rem or 3rem) */
+    }
+}
+@media (max-width: 767px) {
+    .terminal-container {
+        max-width: 95vw;
+        margin-top: 2rem;
+    }
+    .terminal-content {
+        font-size: 14px;
+        padding: 12px 6px 8px 6px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.1rem;
+    }
+    .btn-primary,
+    .border {
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+}
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.3rem;
+    }
+}
+.terminal-container:hover {
+    box-shadow: 0 16px 40px rgba(37,99,235,0.18), 0 2px 8px rgba(0,0,0,0.18);
+    transform: translateY(-4px) scale(1.015);
+}
+.terminal {
+    background: rgba(15, 23, 42, 0.97);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    border: 1px solid #334155;
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
+    transition: border-color 0.3s;
+}
+.terminal-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+    transition: background 0.3s;
+}
+.terminal-header:hover {
+    background: #22304a;
+}
+.terminal-buttons {
+    display: flex;
+    gap: 6px;
+    margin-right: 12px;
+}
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: box-shadow 0.3s;
+}
+.terminal-button.red { background: #ff5f56; }
+.terminal-button.yellow { background: #ffbd2e; }
+.terminal-button.green { background: #27c93f; }
+.terminal-button:hover {
+    box-shadow: 0 0 8px 2px rgba(56,189,248,0.25);
+}
+.terminal-title {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+.terminal-content {
+    padding: 16px 16px 10px 16px;
+    background: transparent;
+    color: #e2e8f0;
+    font-size: 15px;
+}
+.command-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3em;
+    transition: color 0.2s;
+}
+.command-line:hover .prompt {
+    color: #2563eb;
+}
+.prompt {
+    color: #38bdf8;
+    margin-right: 8px;
+    transition: color 0.2s;
+}
+.command-output {
+    color: #94a3b8;
+    margin-bottom: 0.3em;
+    padding-left: 18px;
+    white-space: pre-line;
+    transition: color 0.2s;
+}
+.tech-stack {
+    font-family: inherit;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    margin-bottom: 0.3em;
+    padding-left: 18px;
+    font-size: 15px;
+    line-height: 1.5;
+    transition: color 0.2s;
+}
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background: #e2e8f0;
+    animation: blink 1s steps(1) infinite;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+.gradient-text {
+    background: linear-gradient(90deg, #2563eb, #0284c7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+}
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+}
+.btn-primary {
+    background: linear-gradient(90deg, #2563eb, #0284c7);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+.seperator {
+    color: #3872f0;
+    font-size: 1.2em;
+    opacity: 0.85;
+    user-select: none;
+}
+</style>

@@ -1,0 +1,106 @@
+<!-- Contact Section -->
+<section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 relative">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold mb-12 text-center section-title">Get In Touch</h2>
+    
+    <div class="grid md:grid-cols-2 gap-12">
+      
+      <!-- Left Side: Info -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">Let's Talk</h3>
+        <p class="text-gray-400 mb-6 leading-relaxed">I'm currently exploring new opportunities. Whether it's a question, project, or collaboration idea—let’s connect!</p>
+        
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+              <i class="fas fa-envelope text-blue-400"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">Email me at</p>
+              <a href="mailto:telugurenuka40@gmail.com" class="text-blue-400 hover:text-blue-300">telugurenuka40@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
+              <i class="fas fa-map-marker-alt text-purple-400"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">Based in</p>
+              <p class="text-gray-300">Hyderabad, India</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <h4 class="text-lg font-medium mb-4 text-white">Connect with me</h4>
+          <div class="flex space-x-4">
+            <a href="https://github.com/Renu-telugu" class="social-icon w-10 h-10" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/telugu-renuka-a26166264/" class="social-icon w-10 h-10" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://leetcode.com/u/Renu_Telugu_05/" class="social-icon w-10 h-10" target="_blank" title="LeetCode">
+                <i class="fas fa-code"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Contact Form -->
+      <div>
+        <form id="contact-form" class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="relative">
+              <input type="text" id="name" name="name" class="contact-input peer" required />
+              <label for="name" class="contact-label">Name</label>
+            </div>
+            <div class="relative">
+              <input type="email" id="email" name="email" class="contact-input peer" required />
+              <label for="email" class="contact-label">Email</label>
+            </div>
+          </div>
+          <div class="relative">
+            <input type="text" id="subject" name="subject" class="contact-input peer" required />
+            <label for="subject" class="contact-label">Subject</label>
+          </div>
+          <div class="relative">
+            <textarea id="message" name="message" rows="5" class="contact-input peer resize-none" required></textarea>
+            <label for="message" class="contact-label">Message</label>
+          </div>
+          <button type="submit" class="btn-primary text-white font-medium py-3 px-6 rounded-lg w-full">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Notification popups -->
+<div id="form-success" class="form-popup bg-green-900/90 border-green-500/30 text-green-300">
+  <i class="fas fa-check-circle text-xl mr-3"></i>
+  <p>Your message has been sent successfully!</p>
+</div>
+
+<div id="form-error" class="form-popup bg-red-900/90 border-red-500/30 text-red-300">
+  <i class="fas fa-exclamation-circle text-xl mr-3"></i>
+  <p>There was an error sending your message. Please try again.</p>
+</div>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const successBox = document.getElementById("form-success");
+  const errorBox = document.getElementById("form-error");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Simulate success
+    successBox.classList.add("show");
+    setTimeout(() => successBox.classList.remove("show"), 4000);
+
+    form.reset();
+  });
+</script>
