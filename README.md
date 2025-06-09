@@ -19,12 +19,6 @@ A simple, responsive personal portfolio website built with HTML, CSS (TailwindCS
    ```
 2. Open `index.html` in your browser.
 
-## Customization
-
-- Edit content in the `sections/` folder.
-- Update styles in `css/styles.css`.
-- Add images to `public/images/`.
-
 ---
 
 © Telugu Renuka
