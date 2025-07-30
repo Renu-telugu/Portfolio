@@ -18,19 +18,14 @@
     />
   </head>
   <body class="min-h-screen">
-    <!-- Include header navigation -->
     <div id="header-container"></div>
 
-    <!-- Include hero section -->
     <div id="hero-container"></div>
 
-    <!-- Include about section -->
     <div id="about-container"></div>
 
-    <!-- Include experience section (NEW) -->
     <div id="experience-container"></div>
 
-    <!-- Other sections -->
     <div id="skills-container"></div>
     <div id="education-container"></div>
     <div id="projects-container"></div>
@@ -58,10 +53,23 @@
         await loadSection("header-container", "header.html");
         await loadSection("hero-container", "hero.html");
         await loadSection("about-container", "about.html");
-        await loadSection("experience-container", "experience.html"); // <-- Added line
+        await loadSection("experience-container", "experience.html");
         await loadSection("skills-container", "skills.html");
         await loadSection("education-container", "education.html");
+
         await loadSection("projects-container", "projects.html");
+
+        const script = document.createElement("script");
+        script.src = "js/projects-carousel.js";
+        script.onload = () => {
+          if (typeof renderProjects === "function") {
+            renderProjects();
+          } else {
+            console.error("renderProjects() not found");
+          }
+        };
+        document.body.appendChild(script);
+
         await loadSection("certificates-container", "certificates.html");
         await loadSection("contact-container", "contact.html");
         await loadSection("footer-container", "footer.html");
@@ -73,7 +81,7 @@
         setupMobileMenu();
       });
 
-      // Contact form submission handler
+      // Contact form submission handler (rest of your existing code for this function)
       function setupContactForm() {
         const contactForm = document.getElementById("contact-form");
         const formSuccess = document.getElementById("form-success");
@@ -83,27 +91,23 @@
           contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            // Reset any visible notifications
             if (formSuccess) formSuccess.classList.remove("show");
             if (formError) formError.classList.remove("show");
 
-            // Show success message almost immediately (0.1ms is too fast for setTimeout, using 1ms)
             setTimeout(() => {
               if (formSuccess) {
                 formSuccess.classList.add("show");
-
-                // Auto-hide the notification after 2 seconds
                 setTimeout(() => {
                   formSuccess.classList.remove("show");
                 }, 1500);
               }
               contactForm.reset();
-            }, 1); // Show almost immediately
+            }, 1);
           });
         }
       }
 
-      // Mobile menu functionality
+      // Mobile menu functionality (rest of your existing code for this function)
       function setupMobileMenu() {
         const mobileMenuButton = document.getElementById("mobile-menu-button");
         const mobileMenu = document.getElementById("mobile-menu");
@@ -121,7 +125,6 @@
             );
           });
 
-          // Close mobile menu when clicking on a link
           const mobileLinks = mobileMenu.querySelectorAll("a");
           mobileLinks.forEach((link) => {
             link.addEventListener("click", () => {
