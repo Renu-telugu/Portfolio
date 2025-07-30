@@ -1,62 +1,135 @@
 function renderProjects() {
   const projects = [
     {
-      title: "Podpal",
+      title: "Eatery - Food delivery app",
       description:
-        "A personalized podcast manager with speech-to-text and modulation.",
-      techStack: ["MERN", "Web Speech API", "Context API"],
+        "A full-stack food ordering platform where users can view menus, place orders with Stripe payments, and leave reviews. Includes search filters, admin dashboard, and secure authentication.",
+      techStack: [
+        "MongoDB",
+        "Express.js",
+        "React.js",
+        "Node.js",
+        "Stripe",
+        "React Router",
+      ],
+      image: "eatery.png",
+      github: "https://github.com/Renu-telugu/Eatery",
+    },
+    {
+      title: "Podpal - Your Personalised podcast manager",
+      description:
+        "A full-featured podcast web app where users can create channels, upload and listen to podcasts, follow creators, and get real-time notifications, with admin moderation, analytics, and offline support.",
+      techStack: [
+        "React.js",
+        "Express.js",
+        "MongoDB",
+        "Node.js",
+        "JWT",
+        "Multer",
+        "Listen Notes API",
+      ],
       image: "podpal.jpg",
-      github: "https://github.com/SreejaReddy414/podpal",
+      github: "https://github.com/Renu-telugu/PodPal-Project",
     },
     {
       title: "Heavnly",
-      description: "An Airbnb clone with booking, filters, and user auth.",
-      techStack: ["MERN", "Tailwind CSS", "JWT"],
+      description:
+        "A full-stack web application for browsing and managing property listings, featuring secure authentication, dynamic image uploads, user reviews, and a sleek, responsive interface.",
+      techStack: [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Mongoose",
+        "Passport.js",
+        "EJS",
+        "Bootstrap",
+        "Cloudinary",
+        "Multer",
+        "connect-mongo",
+        "Joi",
+        "connect-flash",
+      ],
       image: "heavnly.jpg",
-      github: "https://github.com/SreejaReddy414/heavnly",
+      github: "https://github.com/Renu-telugu/Heavnly",
     },
     {
-      title: "Online Mentoring System",
-      description: "Java-based mentoring manager with admin and user panels.",
-      techStack: ["Java", "JSP", "MySQL"],
+      title: "Online Mentoring Management System",
+      description:
+        "A web-based platform that streamlines mentor-mentee coordination through admin control, mentor reporting, and student query management.",
+      techStack: [
+        "Java",
+        "JDBC",
+        "Servlets (Tomcat)",
+        "MySQL",
+        "HTML",
+        "CSS",
+        "JavaScript",
+      ],
       image: "mentoring.jpg",
       github:
-        "https://github.com/SreejaReddy414/OnlineMentoringManagementSystem",
+        "https://github.com/Renu-telugu/Online-Mentoring-Management-System",
     },
     {
       title: "Blue Chat",
-      description: "Real-time responsive chat app with MongoDB backend.",
-      techStack: ["Node.js", "MongoDB", "EJS"],
+      description:
+        "A lightweight and responsive chat app that allows users to send, edit, and delete messages in real-time with a clean UI.",
+      techStack: ["Node.js", "Express.js", "MongoDB", "Mongoose", "EJS", "CSS"],
       image: "bluechat.jpg",
-      github: "https://github.com/SreejaReddy414/BlueChat",
+      github: "https://github.com/Renu-telugu/BlueChat",
     },
     {
       title: "EchoSync",
-      description: "Memory game using Web Audio API and Local Storage.",
-      techStack: ["JavaScript", "HTML5", "CSS3"],
+      description:
+        "A visually engaging memory game with smooth transitions, sound effects, score tracking, and offline support using local storage.",
+      techStack: [
+        "HTML5",
+        "CSS3",
+        "JavaScript (ES6+)",
+        "Local Storage API",
+        "Web Audio API",
+      ],
       image: "echosync.jpg",
-      github: "https://github.com/SreejaReddy414/EchoSync",
+      github: "https://github.com/Renu-telugu/EchoSync",
+    },
+    {
+      title: "AskHub - A Quora-Style Q&A App",
+      description:
+        "A Quora-like web application where users can view, create, edit, and delete question-style posts using RESTful APIs.",
+      techStack: [
+        "Node.js",
+        "Express.js",
+        "EJS",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "RESTful API",
+      ],
+      image: "quora.webp",
+      github: "https://github.com/Renu-telugu/quora-posts-app",
     },
     {
       title: "UserHub",
-      description: "A CRUD-based user management dashboard.",
-      techStack: ["Node.js", "MySQL", "EJS"],
+      description:
+        "A responsive user management app with secure authentication, CRUD operations, and search functionality.",
+      techStack: ["Node.js", "MySQL", "Express", "EJS", "CSS"],
       image: "userhub.jpeg",
-      github: "https://github.com/SreejaReddy414/UserHub",
+      github: "https://github.com/Renu-telugu/user-management-app",
     },
     {
       title: "Rock Paper Scissors",
-      description: "Classic browser game with clean animations.",
-      techStack: ["JavaScript", "HTML", "CSS"],
+      description:
+        "A classic Rock-Paper-Scissors game with beautiful animations and responsive design, where players compete against the computer with persistent score tracking.",
+      techStack: ["HTML", "CSS", "JavaScript"],
       image: "rps.jpg",
-      github: "https://github.com/SreejaReddy414/RockPaperScissors",
+      github: "https://github.com/Renu-telugu/Rock-Paper-Scissors",
     },
     {
       title: "Beatify",
-      description: "Spotify-inspired music player clone.",
-      techStack: ["HTML", "CSS", "JavaScript"],
+      description:
+        "A responsive Spotify-inspired music player UI built with smooth animations and clean design to mimic the Spotify web experience.",
+      techStack: ["HTML", "CSS", "JavaScript", "FontAwesome"],
       image: "beatify.jpg",
-      github: "https://github.com/SreejaReddy414/Beatify",
+      github: "https://github.com/Renu-telugu/Beatify",
     },
   ];
 
@@ -72,8 +145,9 @@ function renderProjects() {
   projects.forEach((project, index) => {
     // Create Project Card
     const card = document.createElement("div");
+
     card.className =
-      "min-w-full max-w-3xl mx-auto snap-center bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition duration-300";
+      "min-w-full max-w-3xl mx-auto snap-center rounded-2xl shadow-2xl overflow-hidden transition duration-300 h-[470px] border border-[rgba(2,132,199,0.2)] bg-[rgba(17,24,39,0.6)]";
 
     card.innerHTML = `
       <div class="overflow-hidden">
@@ -103,7 +177,7 @@ function renderProjects() {
           <a href="${
             project.github
           }" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700 transition">
-            <i class="fab fa-github"></i> View Project
+            <i class="fab fa-github"></i> View
           </a>
         </div>
       </div>
