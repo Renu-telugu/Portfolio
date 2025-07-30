@@ -61,24 +61,26 @@ function renderProjects() {
   ];
 
   const carousel = document.getElementById("carousel");
+  const dotsContainer = document.getElementById("carouselDots");
 
-  if (!carousel) {
-    console.error("Carousel container not found.");
-    return;
-  }
+  if (!carousel || !dotsContainer) return;
 
-  // Clear carousel content
+  // Clear previous contents
   carousel.innerHTML = "";
+  dotsContainer.innerHTML = "";
 
-  projects.forEach((project) => {
+  projects.forEach((project, index) => {
+    // Create Project Card
     const card = document.createElement("div");
     card.className =
-      "min-w-full max-w-3xl mx-auto snap-center bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition duration-300";
+      "min-w-full max-w-3xl mx-auto snap-center bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition duration-300";
 
     card.innerHTML = `
-      <img src="public/images/${project.image}" alt="${
+      <div class="overflow-hidden">
+        <img src="public/images/${project.image}" alt="${
       project.title
-    }" class="w-full h-48 object-cover">
+    }" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300">
+      </div>
       <div class="p-6">
         <h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400">${
           project.title
@@ -89,35 +91,76 @@ function renderProjects() {
         <div class="flex flex-wrap gap-2 mb-4">
           ${project.techStack
             .map(
-              (tech) =>
-                `<span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-semibold px-2.5 py-0.5 rounded-full">${tech}</span>`
+              (tech) => `
+            <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+              ${tech}
+            </span>
+          `
             )
             .join("")}
         </div>
-        <div class="flex justify-end">
+        <div class="flex justify-start">
           <a href="${
             project.github
-          }" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">GitHub</a>
+          }" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700 transition">
+            <i class="fab fa-github"></i> View Project
+          </a>
         </div>
       </div>
     `;
 
     carousel.appendChild(card);
+
+    // Create Dot
+    const dot = document.createElement("span");
+    dot.className =
+      "dot w-3 h-3 rounded-full bg-gray-400 inline-block transition-all duration-300";
+    dot.setAttribute("data-index", index);
+    dotsContainer.appendChild(dot);
   });
 
-  // Add scroll buttons functionality
+  const dots = Array.from(dotsContainer.children);
+
+  // Scroll functionality
   const leftBtn = document.getElementById("scrollLeft");
   const rightBtn = document.getElementById("scrollRight");
 
+  function scrollToCard(index) {
+    carousel.scrollTo({
+      left: index * carousel.clientWidth,
+      behavior: "smooth",
+    });
+    updateActiveDot(index);
+  }
+
+  function updateActiveDot(index) {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-gray-800", i === index);
+      dot.classList.toggle("bg-gray-400", i !== index);
+    });
+  }
+
+  let currentIndex = 0;
+
   if (leftBtn && rightBtn) {
     leftBtn.addEventListener("click", () => {
-      carousel.scrollBy({ left: -carousel.clientWidth, behavior: "smooth" });
+      currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+      scrollToCard(currentIndex);
     });
 
     rightBtn.addEventListener("click", () => {
-      carousel.scrollBy({ left: carousel.clientWidth, behavior: "smooth" });
+      currentIndex = (currentIndex + 1) % projects.length;
+      scrollToCard(currentIndex);
     });
-  } else {
-    console.error("Scroll buttons not found.");
   }
+
+  // Update active dot on scroll
+  carousel.addEventListener("scroll", () => {
+    const newIndex = Math.round(carousel.scrollLeft / carousel.clientWidth);
+    currentIndex = newIndex;
+    updateActiveDot(currentIndex);
+  });
+
+  // Initialize first active dot
+  updateActiveDot(0);
 }
